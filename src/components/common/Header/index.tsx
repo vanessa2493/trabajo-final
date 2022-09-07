@@ -8,10 +8,7 @@ type Props = {
 const Header: FC<Props> = ({ hideNav }) => {
   return (
     <header>
-      <div className="container">
-        <h1 className="main-title">ConectADAs</h1>
-        {!hideNav && <MainNav />}
-      </div>
+      <MainNav hideNav={!hideNav} />
     </header>
   );
 };

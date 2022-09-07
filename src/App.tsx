@@ -1,5 +1,11 @@
-function App() {
-  return <div className="App"></div>;
-}
+import { Layout } from "./components";
 
-export default App;
+const App = () => {
+  return (
+    <Layout page="Home" hideNav>
+      <div></div>
+    </Layout>
+  );
+};
+
+export { App };
