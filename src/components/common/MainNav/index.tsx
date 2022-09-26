@@ -6,7 +6,7 @@ type Props = {
   hideNav?: boolean;
 };
 
-const MainNav: FC<Props> = ({ hideNav }) => {
+const MainNav: FC<Props> = ({ hideNav  }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -17,7 +17,7 @@ const MainNav: FC<Props> = ({ hideNav }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {!hideNav ? (
+            {hideNav ? (
               <>
                 <Link className="nav-link" to={"/"}>
                   Home
