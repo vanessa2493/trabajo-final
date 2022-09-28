@@ -1,5 +1,11 @@
-const Signup = () => {
-  return <div></div>;
-};
+import {Layout, SignupForm, SingupForm} from "../../components";
 
-export { Signup };
+const Signup = () => {
+  return (
+      <Layout page={'login'}>
+        <SignupForm/>
+      </Layout>
+  )
+}
+
+export {Signup};
