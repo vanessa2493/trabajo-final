@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./styles.scss"
 
 type Props = {
@@ -9,42 +9,41 @@ type Props = {
 
 const MainNav: FC<Props> = ({ hideNav  }) => {
   return (
-    <Navbar className="main-nav" >
-      <Container>
-        <Navbar.Brand>
-          {" "}
-          <h1>ConectADAs</h1>{" "}
+    <Navbar className="main-nav" expand="lg">
+      <Container fluid>
+        <Navbar.Brand href='/'>
+          <h1>ConectADAs</h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            {!hideNav ? (
+          <Nav className="ms-auto">
+            {hideNav ? (
               <>
-                <Link className="nav-link" to={"/"}>
+                <NavLink className="nav-link" to={"/"}>
                   Home
-                </Link>
-                <Link className="nav-link" to={"/"}>
-                  Buscar Amigos
-                </Link>
+                </NavLink>
+                <NavLink className="nav-link" to={"/searchMovies"}>
+                  Buscar Peliculas
+                </NavLink>
 
                 <NavDropdown title="Usuario" id="basic-nav-dropdown">
-                  <Link className="nav-link" to={"/"}></Link>
-                  <Link className="nav-link" to={"/"}></Link>
-                  <Link className="nav-link" to={"/"}></Link>
+                  <NavLink className="nav-link" to={"/profile"}>
+                    Profile
+                  </NavLink>
                   <NavDropdown.Divider />
-                  <Link className="nav-link" to={"/"}>
+                  <NavLink className="nav-link" to={"/login"}>
                     Logout
-                  </Link>
+                  </NavLink>
                 </NavDropdown>
               </>
             ) : (
               <>
-                <Link className="nav-link" to={"/"}>
+                <NavLink className="nav-link" to={"/login"}>
                   Ingresar
-                </Link>
-                <Link className="nav-link" to={"/"}>
+                </NavLink>
+                <NavLink className="nav-link" to={"/signup"}>
                   Registrarse
-                </Link>
+                </NavLink>
               </>
             )}
           </Nav>
