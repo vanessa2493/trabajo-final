@@ -1,14 +1,13 @@
-import { FC } from "react";
 import { MainNav } from "../MainNav";
+import "./styles.scss"
 
-type Props = {
-  hideNav?: boolean;
-};
 
-const Header: FC<Props> = ({ hideNav }) => {
+const hideNav:boolean = false
+
+const Header = () => {
   return (
-    <header>
-      <MainNav hideNav={!hideNav} />
+    <header className="main-header">
+        {!hideNav && <MainNav hideNav={!hideNav} />}
     </header>
   );
 };

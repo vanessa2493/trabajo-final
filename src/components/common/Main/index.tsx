@@ -6,7 +6,11 @@ type Props = {
 };
 
 const Main: FC<Props> = ({ children, className }) => {
-  return <main className={`main ${className}`}>{children}</main>;
+  return (
+    <main className={`main ${className} flex-grow-1`}>
+      {children}
+    </main>
+  )
 };
 
 export { Main };

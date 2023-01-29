@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./styles.scss"
 
 type Props = {
   hideNav?: boolean;
@@ -8,7 +9,7 @@ type Props = {
 
 const MainNav: FC<Props> = ({ hideNav  }) => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="main-nav" >
       <Container>
         <Navbar.Brand>
           {" "}

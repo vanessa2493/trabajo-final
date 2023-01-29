@@ -1,8 +1,9 @@
-import {Layout, SignupForm, SingupForm} from "../../components";
+import {Layout, SignupForm} from "../../components";
+import React from "react";
 
 const Signup = () => {
   return (
-      <Layout page={'login'}>
+      <Layout page={'Login'}>
         <SignupForm/>
       </Layout>
   )
