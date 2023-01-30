@@ -1,44 +1,89 @@
-
+import {Button, Form}from 'react-bootstrap';
+import {useEffect} from "react";
+import {api} from '../../../src/utils/axios'
+import {servicesUser} from "../../services/users";
 
 const SignupForm = () => {
+
     return (
-        <div>
-            <form action="">
-                <div>
-                    <label htmlFor="">Nombre</label>
-                    <input type="text" />
-                </div>
-                <div>
-                    <label htmlFor="">Apellido</label>
-                    <input type="text" />
-                </div>
-                <div>
-                    <label htmlFor="">Fecha de nacimiento</label>
-                    <input type="date" />
-                </div>
-                <div>
-                    <label htmlFor="">Correo electrónico</label>
-                    <input type="email" />
-                </div>
-                <div>
-                    <label htmlFor="">Contraseña</label>
-                    <input type="password" />
-                </div>
-                <div>
-                    <label htmlFor="">avatar</label>
-                    <input type="url" />
-                </div>
-                <div>
-                    <label htmlFor="">País</label>
-                    <select name="" id=""></select>
-                </div>
-                {/* aqui hay que poner dependiendo el pais que se elija, que aprezca la city */}
-                <div>
-                    <label htmlFor="">City</label>
-                    <select name="" id=""></select>
-                </div>
-            </form>
-        </div>
+        <Form>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control type="text" placeholder="Ingresar nombre" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Apellido</Form.Label>
+                <Form.Control type="text" placeholder="Ingresar apellido" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="Ingresar email" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Ingresar password" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Fecha de nacimiento</Form.Label>
+                <Form.Control type="date" placeholder="Ingresar fecha de nacimiento" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Nickname</Form.Label>
+                <Form.Control type="text" placeholder="Ingresar nickname" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Ciudad</Form.Label>
+                <Form.Control type="text" placeholder="Ingresar ciudad" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Pais</Form.Label>
+                <Form.Control type="text" placeholder="Ingresar pais" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Amigos</Form.Label>
+                <Form.Control type="list" placeholder="Ingresar amigos" />
+                <Form.Text className="text-danger">
+                    Valor incorrecto
+                </Form.Text>
+            </Form.Group>
+
+
+            <Button variant="primary" type="submit">
+                Crear cuenta
+            </Button>
+        </Form>
     );
 };
 

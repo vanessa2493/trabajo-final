@@ -1,5 +1,5 @@
-export type user = {
-  avatar: string;
+export type User = {
+  nickname: string;
   birthdate: Date;
   city: string;
   country: string;
