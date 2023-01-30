@@ -12,3 +12,5 @@ export type User = {
   sessionToken?: string;
   state: string;
 };
+
+export type SignupType = Omit<User, 'id'>

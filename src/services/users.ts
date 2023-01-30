@@ -1,7 +1,7 @@
 import {api} from "../utils/axios";
-import {User} from "../types";
+import {SignupType} from "../types";
 
-const add = async (userPrueba: User) =>{
+const add = async (userPrueba: SignupType) =>{
 
     const response = await api.post('/users.json', userPrueba)
 
