@@ -1,9 +1,10 @@
 import {Layout, LoginForm} from "../../components";
+import React from "react";
 
 const Login = () => {
     return (
-        <Layout page={'login'}>
-            <LoginForm></LoginForm>
+        <Layout page={'Login'}>
+            <LoginForm/>
         </Layout>
     )
 }

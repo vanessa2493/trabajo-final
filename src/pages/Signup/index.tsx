@@ -1,5 +1,12 @@
-const Signup = () => {
-  return <div></div>;
-};
+import {Layout, SignupForm} from "../../components";
+import React from "react";
 
-export { Signup };
+const Signup = () => {
+  return (
+      <Layout page={'Login'}>
+        <SignupForm/>
+      </Layout>
+  )
+}
+
+export {Signup};

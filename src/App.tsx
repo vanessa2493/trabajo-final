@@ -1,10 +1,10 @@
-import { Layout } from "./components";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
-    <Layout page="Home" hideNav>
-      <div></div>
-    </Layout>
+      <div>
+          <Outlet/>
+      </div>
   );
 };
 

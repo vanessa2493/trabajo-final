@@ -1,5 +1,9 @@
+import "./styles.scss"
+
 const Footer = () => {
-  return <footer>Footer</footer>;
+  return <footer className="main-footer">
+    Footer
+  </footer>;
 };
 
 export { Footer };
