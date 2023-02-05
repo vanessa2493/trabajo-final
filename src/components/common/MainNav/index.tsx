@@ -17,7 +17,7 @@ const MainNav: FC<Props> = ({ hideNav  }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {hideNav ? (
+            {!hideNav ? (
               <>
                 <NavLink className="nav-link" to={"/"}>
                   Home
