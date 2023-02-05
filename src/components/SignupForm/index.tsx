@@ -1,28 +1,45 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import {FC} from "react";
 
-const SignupForm: FC = () => {
+
+const SignupForm = () => {
     return (
-        <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-                Login
-            </Button>
-        </Form>
+        <div>
+            <form action="">
+                <div>
+                    <label htmlFor="">Nombre</label>
+                    <input type="text" />
+                </div>
+                <div>
+                    <label htmlFor="">Apellido</label>
+                    <input type="text" />
+                </div>
+                <div>
+                    <label htmlFor="">Fecha de nacimiento</label>
+                    <input type="date" />
+                </div>
+                <div>
+                    <label htmlFor="">Correo electrónico</label>
+                    <input type="email" />
+                </div>
+                <div>
+                    <label htmlFor="">Contraseña</label>
+                    <input type="password" />
+                </div>
+                <div>
+                    <label htmlFor="">avatar</label>
+                    <input type="url" />
+                </div>
+                <div>
+                    <label htmlFor="">País</label>
+                    <select name="" id=""></select>
+                </div>
+                {/* aqui hay que poner dependiendo el pais que se elija, que aprezca la city */}
+                <div>
+                    <label htmlFor="">City</label>
+                    <select name="" id=""></select>
+                </div>
+            </form>
+        </div>
     );
-}
+};
 
-export {SignupForm};
+export { SignupForm };
