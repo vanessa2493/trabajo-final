@@ -17,13 +17,17 @@ const MainNav: FC<Props> = ({ hideNav  }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {!hideNav ? (
+            {hideNav ? (
               <>
                 <NavLink className="nav-link" to={"/"}>
                   Home
                 </NavLink>
                 <NavLink className="nav-link" to={"/searchMovies"}>
                   Buscar Peliculas
+                </NavLink>
+
+                <NavLink className="nav-link" to={"/searchFriends"}>
+                  Buscar Amigxs
                 </NavLink>
 
                 <NavDropdown title="Usuario" id="basic-nav-dropdown">
