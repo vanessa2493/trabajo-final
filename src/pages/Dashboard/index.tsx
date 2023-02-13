@@ -1,10 +1,19 @@
-import {Layout} from "../../components";
+import {Layout, MovieCard} from "../../components";
 import React from "react";
+import "./styles.scss"
 
 const Dashboard = () =>{
     return(
         <Layout page="Home" hideNav>
-            <div>Dashboard</div>
+            <MovieCard id="1"
+
+                       title="the wolf"
+                       date="10/10/2022"
+                       userName="Pancho Villa"
+                       image="mi imagen"
+                       description="Lorem ipsum"
+            />
+
         </Layout>
     )
 }

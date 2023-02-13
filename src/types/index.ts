@@ -14,3 +14,9 @@ export type User = {
 };
 
 export type SignupType = Omit<User, 'id'>
+
+export type CommentsType = {
+  id: string;
+  user_id: Pick<User, 'id'>
+  comment: string;
+}
