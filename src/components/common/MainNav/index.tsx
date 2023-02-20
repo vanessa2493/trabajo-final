@@ -10,7 +10,7 @@ type Props = {
 const MainNav: FC<Props> = ({ hideNav  }) => {
   return (
     <Navbar className="main-nav" expand="lg">
-      <Container fluid>
+      <Container fluid className="container-nav" >
         <Navbar.Brand href='/'>
           <h1>ConectADAs</h1>
         </Navbar.Brand>
