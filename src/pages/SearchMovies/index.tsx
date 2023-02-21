@@ -19,8 +19,15 @@ const SearchMovies = () => {
         const value = event.currentTarget.value;
         setSearchParams({
             ...searchParams,
-            query: value,
-            page: '1', // Restablecer la página a 1 al cambiar la consulta
+            query: value
+        });
+    };
+
+    const onPageChange = (event: React.FormEvent<HTMLInputElement>) => {
+        const value = event.currentTarget.value;
+        setSearchParams({
+            ...searchParams,
+            page: value
         });
     };
 
@@ -34,6 +41,14 @@ const SearchMovies = () => {
                     {...register('query')}
                     value={searchParams.get('query') ?? ''}
                     onInput={onInputChange}
+                />
+                <FormControl
+                    type="number"
+                    placeholder="Page"
+                    className="mr-sm-2"
+                    {...register('page')}
+                    value={searchParams.get('page') ?? '1'}
+                    onInput={onPageChange}
                 />
             </Form>
         </Layout>
