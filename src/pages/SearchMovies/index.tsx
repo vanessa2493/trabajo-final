@@ -19,15 +19,17 @@ const SearchMovies = () => {
         const value = event.currentTarget.value;
         setSearchParams({
             ...searchParams,
-            query: value
+            query: value,
+            page: '1'
         });
     };
 
     const onPageChange = (event: React.FormEvent<HTMLInputElement>) => {
         const value = event.currentTarget.value;
-        setSearchParams({
-            ...searchParams,
-            page: value
+        setSearchParams((params) => {
+            const newParams = new URLSearchParams(params);
+            newParams.set('page', value);
+            return newParams;
         });
     };
 
