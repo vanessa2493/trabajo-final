@@ -2,7 +2,7 @@ import {apiMovies} from "../utils/axios";
 
 
 
-const search = async (query: string, page: number) => {
+const search = async (query: string, page: string) => {
     try {
         const response = await apiMovies.get('/search/movie', {params: {query, page}})
         return response.data;
@@ -12,4 +12,4 @@ const search = async (query: string, page: number) => {
 };
 
 
-export const moviesApi = { search };
+export const serviceMovies = { search };
