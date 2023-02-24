@@ -1,6 +1,6 @@
 import {Layout, MovieCard} from "../../components";
 import React, { useState, useEffect } from "react";
-import {Form, FormControl, Row} from "react-bootstrap";
+import {Col, Form, FormControl, Row} from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import { serviceMovies } from "../../services/movies";
 import {MovieType} from "../../types";
@@ -37,6 +37,10 @@ const SearchMovies = () => {
         setSearchParams({ ...searchParams, query, page: value });
     };
 
+    const generatePageNumbers = (page: number, totalPages: number) => {
+        return Array.from({ length: totalPages }, (_, i) => i + 1);
+    };
+
     return (
         <Layout page={"SearchMovies"}>
             <Form>
@@ -58,14 +62,17 @@ const SearchMovies = () => {
                     ))}
                 </Row>
                 <Row>
-                    <FormControl
-                        type="number"
-                        placeholder="Page"
-                        className="mr-sm-2"
-                        value={page}
-                        onChange={onPageChange}
+                    <Col>
+                        Pagination
+                        <FormControl
+                            type="number"
+                            placeholder="Page"
+                            className="mr-sm-2"
+                            value={page}
+                            onChange={onPageChange}
 
-                    />
+                        />
+                    </Col>
                 </Row>
             </Form>
         </Layout>
