@@ -4,6 +4,7 @@ import {Form, FormControl, Row} from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import { serviceMovies } from "../../services/movies";
 import {MovieType} from "../../types";
+import "./styles.scss";
 
 const SearchMovies = () => {
     const [query, setQuery] = useState("");
@@ -42,7 +43,7 @@ const SearchMovies = () => {
                         onChange={handleSearch}
                     />
                 </Row>
-                <Row xs={1} md={3}>
+                <Row className="movieCardContainer" xs={1} md={3}>
                     {movies?.map((movie) => (
                         <MovieCard
                             movie={movie}
@@ -50,7 +51,7 @@ const SearchMovies = () => {
                         />
                     ))}
                 </Row>
-                <Row>
+                <Row className = "pagination">
                     <CustomPagination
                         currentPage={parseInt(searchParams.get("page") ?? "1")}
                         totalPages={totalPages ?? 0}
