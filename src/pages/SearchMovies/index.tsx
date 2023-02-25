@@ -1,13 +1,12 @@
-import {Layout, MovieCard} from "../../components";
+import {CustomPagination, Layout, MovieCard} from "../../components";
 import React, { useState, useEffect } from "react";
-import {Col, Form, FormControl, Row} from "react-bootstrap";
+import {Form, FormControl, Row} from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import { serviceMovies } from "../../services/movies";
 import {MovieType} from "../../types";
 
 const SearchMovies = () => {
     const [query, setQuery] = useState("");
-    const [page, setPage] = useState("1");
     const [searchParams, setSearchParams] = useSearchParams();
     const [movies, setMovies] = useState<MovieType[]>();
     const [totalPages, setTotalPages] = useState<number>();
@@ -22,23 +21,13 @@ const SearchMovies = () => {
                 setMovies(data.results);
                 setTotalPages(data.total_pages);
             });
-    }, [searchParams, query, page]);
+    }, [searchParams, query]);
 
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setQuery(value);
         setSearchParams({ query: value, page: "1" });
-    };
-
-    const onPageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setPage(value);
-        setSearchParams({ ...searchParams, query, page: value });
-    };
-
-    const generatePageNumbers = (page: number, totalPages: number) => {
-        return Array.from({ length: totalPages }, (_, i) => i + 1);
     };
 
     return (
@@ -53,7 +42,7 @@ const SearchMovies = () => {
                         onChange={handleSearch}
                     />
                 </Row>
-                <Row xs={1} md={5} className="g-4">
+                <Row xs={1} md={3}>
                     {movies?.map((movie) => (
                         <MovieCard
                             movie={movie}
@@ -62,17 +51,17 @@ const SearchMovies = () => {
                     ))}
                 </Row>
                 <Row>
-                    <Col>
-                        Pagination
-                        <FormControl
-                            type="number"
-                            placeholder="Page"
-                            className="mr-sm-2"
-                            value={page}
-                            onChange={onPageChange}
-
-                        />
-                    </Col>
+                    <CustomPagination
+                        currentPage={parseInt(searchParams.get("page") ?? "1")}
+                        totalPages={totalPages ?? 0}
+                        onChangePage={(pageNumber) =>
+                            setSearchParams({
+                                ...searchParams,
+                                query: searchParams.get("query") ?? query,
+                                page: pageNumber.toString(),
+                            })
+                        }
+                    />
                 </Row>
             </Form>
         </Layout>

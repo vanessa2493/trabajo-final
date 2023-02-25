@@ -11,7 +11,7 @@ const CustomPagination: React.FC<PaginationProps> = ({ currentPage, totalPages, 
 
     const handlePageClick = (event: React.MouseEvent<HTMLElement>, pageNumber: number) => {
         event.preventDefault();
-        onChangePage(pageNumber);
+        onChangePage(pageNumber as number);
     }
 
     const renderPaginationItems = () => {
