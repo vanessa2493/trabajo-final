@@ -31,7 +31,7 @@ const SearchMovies = () => {
     };
 
     return (
-        <Layout page={"SearchMovies"}>
+        <Layout page={"SearchMovies"} hideAside={true}>
             <Form>
                 <Row>
                     <FormControl
