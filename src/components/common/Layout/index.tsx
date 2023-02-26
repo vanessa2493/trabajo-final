@@ -3,6 +3,7 @@ import { Footer } from "../Footer";
 import { Header } from "../Header";
 import { Main } from "../Main";
 import { Aside } from "../Aside";
+import "./styles.scss"
 
 type Props = {
   children: ReactNode;
@@ -10,7 +11,7 @@ type Props = {
   hideNav?: boolean;
 };
 
-const Layout: FC<Props> = ({ children, page}) => {
+const Layout: FC<Props> = ({ children, page, hideNav}) => {
   return (
     <div className="layout">
       <Header/>
