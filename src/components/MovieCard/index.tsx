@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import {FC} from "react";
 import {Card, Button, Image, Row} from "react-bootstrap";
 import {MovieType} from "../../types";
 
