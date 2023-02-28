@@ -11,6 +11,7 @@ export type User = {
   password: string;
   sessionToken?: string;
   state: string;
+  movies: string[];
 };
 
 export type SignupType = Omit<User, 'id'>
@@ -27,7 +28,7 @@ export type MovieType = {
   genre_ids: [
     number
   ],
-  id: number,
+  id: string,
   original_language: string,
   original_title: string,
   overview: string,
