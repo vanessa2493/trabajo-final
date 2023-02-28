@@ -1,56 +1,68 @@
-import { Layout } from "../../components";
+import {CustomPagination, Layout, MovieCard} from "../../components";
 import React, { useState, useEffect } from "react";
-import { Form, FormControl } from "react-bootstrap";
+import {Form, FormControl, Row} from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import { serviceMovies } from "../../services/movies";
+import {MovieType} from "../../types";
 
 const SearchMovies = () => {
     const [query, setQuery] = useState("");
-    const [page, setPage] = useState("1");
     const [searchParams, setSearchParams] = useSearchParams();
+    const [movies, setMovies] = useState<MovieType[]>();
+    const [totalPages, setTotalPages] = useState<number>();
 
     useEffect(() => {
-        const q = searchParams.get("query");
-        const p = searchParams.get("page");
-        if (q !== null) {
-            setQuery(q);
-        }
-        if (p !== null) {
-            setPage(p);
-        }
-    }, [searchParams]);
+        serviceMovies
+            .search(
+                searchParams.get("query") ?? query,
+                searchParams.get("page") ?? '1'
+            )
+            .then((data)=> {
+                setMovies(data.results);
+                setTotalPages(data.total_pages);
+            });
+    }, [searchParams, query]);
+
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setQuery(value);
         setSearchParams({ query: value, page: "1" });
-        serviceMovies.search(value, "1");
-    };
-
-    const onPageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setPage(value);
-        setSearchParams({ ...searchParams, page: value });
-        serviceMovies.search(query, value);
     };
 
     return (
-        <Layout page={"SearchMovies"}>
+        <Layout page={"SearchMovies"} hideAside={true}>
             <Form>
-                <FormControl
-                    type="text"
-                    placeholder="Search"
-                    className="mr-sm-2"
-                    value={query}
-                    onChange={handleSearch}
-                />
-                <FormControl
-                    type="number"
-                    placeholder="Page"
-                    className="mr-sm-2"
-                    value={page}
-                    onChange={onPageChange}
-                />
+                <Row>
+                    <FormControl
+                        type="text"
+                        placeholder="Search"
+                        className="mr-sm-2"
+                        value={query}
+                        onChange={handleSearch}
+                    />
+                </Row>
+                <Row xs={1} md={3}>
+                    {movies?.map((movie) => (
+                        <MovieCard
+                            movie={movie}
+                            onClick={()=>(console.log("hola juan carlo"))}
+                        />
+                    ))}
+                </Row>
+                <Row>
+                    <CustomPagination
+                        currentPage={parseInt(searchParams.get("page") ?? "1")}
+                        totalPages={totalPages ?? 0}
+                        onChangePage={(pageNumber) =>
+                            setSearchParams({
+                                ...searchParams,
+                                query: searchParams.get("query") ?? query,
+                                page: pageNumber.toString(),
+                            })
+                        }
+                    />
+                </Row>
             </Form>
         </Layout>
     );

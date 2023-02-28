@@ -9,14 +9,19 @@ type Props = {
   children: ReactNode;
   page: string;
   hideNav?: boolean;
+  hideAside?: boolean;
 };
 
-const Layout: FC<Props> = ({ children, page, hideNav}) => {
+const Layout: FC<Props> = ({ children,
+                               page,
+                               hideNav,
+                               hideAside,
+                           }) => {
   return (
     <div className="layout">
       <Header/>
         <div className="d-flex flex-grow-1">
-            <Aside />
+            {!hideAside && <Aside />}
             <Main className={`page ${page}`}>{children}</Main>
         </div>
       <Footer />
