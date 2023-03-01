@@ -15,18 +15,19 @@ const getAll = async () => {
 
 }
 
-const getUser = async (userId: string) => {
+const getUserById = async (userId: string) => {
     const response = await api.get(`/users/${userId}.json`)
     return response.data
 }
 
-const getMovies = async (userId: string) => {
+const getMoviesUser = async (userId: string) => {
     const response = await api.get(`/users/${userId}.json`)
     return response.data.movies
 }
+
 //add movie to an array
-const addMovie = async (userId: string, movieId: string) => {
-    const user = await getUser(userId);
+const addMovieUser = async (userId: string, movieId: string) => {
+    const user = await getUserById(userId);
     let updatedUser;
     if (!user.movies) {
         updatedUser = {
@@ -43,8 +44,8 @@ const addMovie = async (userId: string, movieId: string) => {
     return response.data;
 }
 
-const removeMovie = async (userId: string, movieId: string) => {
-    const user = await getUser(userId);
+const removeMovieUser = async (userId: string, movieId: string) => {
+    const user = await getUserById(userId);
     const updatedUser = {
         ...user,
         movies: user.movies.filter((movie: string) => movie !== movieId)
@@ -53,4 +54,4 @@ const removeMovie = async (userId: string, movieId: string) => {
     return response.data;
 }
 
-export const servicesUser = {add, getAll, getMovies, addMovie}
+export const servicesUser = {add, getAll, getMoviesUser, addMovieUser, removeMovieUser, getUserById}

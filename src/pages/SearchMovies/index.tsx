@@ -49,7 +49,7 @@ const SearchMovies = () => {
                     {movies?.map((movie) => (
                         <MovieCard
                             movie={movie}
-                            onClick={()=>(servicesUser.addMovie(userId, movie.id))}
+                            onClick={()=>(servicesUser.addMovieUser(userId, movie.id))}
                         />
                     ))}
                 </Row>
