@@ -3,12 +3,13 @@ import { Card, Row, Col, Image, Badge, Button } from "react-bootstrap";
 import { CommentsForm } from "../CommentsForm";
 import { MovieType } from "../../types";
 import { serviceMovies } from "../../services/movies";
+import "./styles.scss";
 
 type Props = {
     id: String;
     movieId: string;
     date: Date | string;
-    userName: string;
+    userName?: string;
     onDelete?: (id: string) => void;
 };
 
@@ -31,29 +32,34 @@ const PostCard: FC<Props> = ({
 
 
     return (
-        <Card>
+        <Card className="post-car">
             <Row>
-                <Col xs={3}>
-                    <Image
-                        className="movieImage"
-                        src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
-                        alt={`poster-${movie?.title}`}
-                        fluid
-                    />
+                <Col>
+                    <Row>
+                        <Image
+                            className="post-image"
+                            src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+                            alt={`poster-${movie?.title}`}
+                            fluid
+                        />
+                    </Row>
                 </Col>
-                <Col xs={9}>
-                    <Card.Body>
-                        <Card.Title className="card-title">
-                            <span>{userName}</span>{" "}
-                            <Badge>{date.toString()}</Badge>
-                        </Card.Title>
+                <Col>
+                    <Row>
+                        <Card.Body>
+                            <Card.Title className="card-title">
+                                <span>{userName}</span>
+                                <Badge>{date.toString()}</Badge>
+                            </Card.Title>
 
-                        <Card.Text>
-                            <h4>{movie?.title}</h4>
-                            <p>{movie?.overview}</p>
-                        </Card.Text>
-                    </Card.Body>
+                            <Card.Text>
+                                <h4>{movie?.title}</h4>
+                                <p>{movie?.overview}</p>
+                            </Card.Text>
+                        </Card.Body>
+                    </Row>
                 </Col>
+            </Row>
                 <div>
                     <CommentsForm></CommentsForm>
                 </div>
@@ -63,7 +69,7 @@ const PostCard: FC<Props> = ({
                         Eliminar
                     </Button>
                 </Card.Footer>
-            </Row>
+
         </Card>
     );
 };
