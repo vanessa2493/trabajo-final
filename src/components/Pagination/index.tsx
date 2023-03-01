@@ -1,13 +1,13 @@
-import React from 'react';
+import {FC} from 'react';
 import { Pagination } from 'react-bootstrap';
 
-type PaginationProps = {
+type Props = {
     currentPage: number,
     totalPages: number ,
     onChangePage: (pageNumber: number) => void
 }
 
-const CustomPagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onChangePage}) => {
+const CustomPagination: FC<Props> = ({ currentPage, totalPages, onChangePage}) => {
 
     const handlePageClick = (event: React.MouseEvent<HTMLElement>, pageNumber: number) => {
         event.preventDefault();
