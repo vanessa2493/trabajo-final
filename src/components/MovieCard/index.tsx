@@ -1,14 +1,14 @@
-import React from "react";
+import {FC} from "react";
 import {Card, Button, Image, Row} from "react-bootstrap";
 import {MovieType} from "../../types";
 import "./styles.scss";
 
-interface Props {
+type Props = {
     movie: MovieType
     onClick: () => void
 }
 
-const MovieCard: React.FC<Props> = ({ movie, onClick }) => {
+const MovieCard: FC<Props> = ({ movie, onClick }) => {
     return (
         <Card className="movieCard">
             <Row >
