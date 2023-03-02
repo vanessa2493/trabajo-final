@@ -11,5 +11,14 @@ const search = async (query: string, page: string) => {
     }
 };
 
+const getMovieById = async (id: string) => {
+    try {
+        const response = await apiMovies.get(`/movie/${id}`)
+        return response.data;
+    } catch (error) {
+        throw new Error();
+    }
+}
 
-export const serviceMovies = { search };
+
+export const serviceMovies = { search, getMovieById };

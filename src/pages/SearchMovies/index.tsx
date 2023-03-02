@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import {Form, FormControl, Row} from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import { serviceMovies } from "../../services/movies";
+import { servicesUser } from "../../services/users";
 import {MovieType} from "../../types";
 import "./styles.scss";
 
@@ -11,6 +12,7 @@ const SearchMovies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [movies, setMovies] = useState<MovieType[]>();
     const [totalPages, setTotalPages] = useState<number>();
+    const userId = "-NN-MQaZ3yflds21sV0q"
 
     useEffect(() => {
         serviceMovies
@@ -47,7 +49,7 @@ const SearchMovies = () => {
                     {movies?.map((movie) => (
                         <MovieCard
                             movie={movie}
-                            onClick={()=>(console.log("hola juan carlo"))}
+                            onClick={()=>(servicesUser.addMovieUser(userId, movie.id))}
                         />
                     ))}
                 </Row>
