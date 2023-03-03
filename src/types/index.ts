@@ -11,7 +11,7 @@ export type User = {
   password: string;
   sessionToken?: string;
   state: string;
-  movies: string[];
+  posts: PostType[];
 };
 
 export type SignupType = Omit<User, 'id'>
@@ -41,7 +41,10 @@ export type MovieType = {
   vote_count: number
 }
 
-export type MoviePayload = {
-  query: string,
-  page: string
+export type PostType = {
+  movieId?: string,
+  comments?: string[],
+  date: string,
 }
+
+

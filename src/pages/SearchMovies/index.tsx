@@ -12,6 +12,8 @@ const SearchMovies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [movies, setMovies] = useState<MovieType[]>();
     const [totalPages, setTotalPages] = useState<number>();
+    const currentDate = new Date();
+    const dateString = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
     const userId = "-NN-MQaZ3yflds21sV0q"
 
     useEffect(() => {
@@ -49,7 +51,8 @@ const SearchMovies = () => {
                     {movies?.map((movie) => (
                         <MovieCard
                             movie={movie}
-                            onClick={()=>(servicesUser.addMovieUser(userId, movie.id))}
+                            onClick={()=>(servicesUser.addMovieUser(userId, {movieId: movie.id, date: dateString})
+                            )}
                         />
                     ))}
                 </Row>

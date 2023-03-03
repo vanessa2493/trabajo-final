@@ -1,5 +1,5 @@
 import {api} from "../utils/axios";
-import {SignupType} from "../types";
+import {SignupType, PostType} from "../types";
 
 const add = async (userPrueba: SignupType) =>{
 
@@ -26,18 +26,18 @@ const getMoviesUser = async (userId: string) => {
 }
 
 //add movie to an array
-const addMovieUser = async (userId: string, movieId: string) => {
+const addMovieUser = async (userId: string, post: PostType) => {
     const user = await getUserById(userId);
     let updatedUser;
-    if (!user.movies) {
+    if (!user.posts) {
         updatedUser = {
             ...user,
-            movies: [movieId]
+            posts: [post]
         };
     } else {
         updatedUser = {
             ...user,
-            movies: [...user.movies, movieId]
+            posts: [...user.posts, post]
         };
     }
     const response = await api.patch(`/users/${userId}.json`, updatedUser);
