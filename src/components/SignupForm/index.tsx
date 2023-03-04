@@ -2,14 +2,23 @@ import {Button, Form}from 'react-bootstrap';
 import {useForm} from "react-hook-form";
 import {SignupType} from "../../types";
 import {servicesUser} from "../../services/users";
-
+import { authService } from "../../services/auth";
 
 const SignupForm = () => {
 
     const {register, handleSubmit} = useForm<SignupType>()
 
-    const onSubmit = (data: SignupType) => {
-        servicesUser.add(data)
+    const onSubmit = async (data: SignupType) => {
+        try {
+            const user = await authService.signup(data.email, data.password);
+            console.log("Usuario Registrado Correctamente:", user);
+            await servicesUser.add(data);
+            console.log("User data added to database");
+
+
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
