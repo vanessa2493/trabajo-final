@@ -36,27 +36,31 @@ const PostCard: FC<Props> = ({
             <Row>
                 <Col>
                     <Row>
-                        <Image
-                            className="post-image"
-                            src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
-                            alt={`poster-${movie?.title}`}
-                            fluid
-                        />
+                        <Col>
+                            <Image
+                                className="post-image"
+                                src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+                                alt={`poster-${movie?.title}`}
+                                fluid
+                            />
+                        </Col>
                     </Row>
                 </Col>
                 <Col>
                     <Row>
-                        <Card.Body>
-                            <Card.Title className="card-title">
-                                <span>{userName}</span>
-                                <Badge>{date.toString()}</Badge>
-                            </Card.Title>
+                        <Col>
+                            <Card.Body>
+                                <Card.Title className="card-title">
+                                    <span>{userName}</span>
+                                    <Badge>{date.toString()}</Badge>
+                                </Card.Title>
 
-                            <Card.Text>
-                                <h4>{movie?.title}</h4>
-                                <p>{movie?.overview}</p>
-                            </Card.Text>
-                        </Card.Body>
+                                <Card.Text>
+                                    <h4>{movie?.title}</h4>
+                                    <p>{movie?.overview}</p>
+                                </Card.Text>
+                            </Card.Body>
+                        </Col>
                     </Row>
                 </Col>
             </Row>
