@@ -12,9 +12,10 @@ export type User = {
   sessionToken?: string;
   state: string;
   posts: PostType[];
+  uid: string;
 };
 
-export type SignupType = Omit<User, 'id'>
+export type SignupType = Omit<User, 'sessionToken' | 'state' | 'posts'>;
 
 export type CommentsType = {
   id: string;
