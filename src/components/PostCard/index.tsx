@@ -34,41 +34,33 @@ const PostCard: FC<Props> = ({
         <Card className="post-car">
             <Row>
                 <Col>
-                    <Row>
-                        <Image
-                            className="post-image"
-                            src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
-                            alt={`poster-${movie?.title}`}
-                            fluid
-                        />
-                    </Row>
+                    <Image
+                        className="post-image"
+                        src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+                        alt={`poster-${movie?.title}`}
+                        fluid
+                    />
                 </Col>
                 <Col>
-                    <Row>
-                        <Card.Body>
-                            <Card.Title className="card-title">
-                                <span>{userName}</span>
-                                <Badge>{date ? date.toString() : ""}</Badge>
-                            </Card.Title>
+                    <Card.Body>
+                        <Card.Title className="card-title">
+                            <span>{userName}</span>
+                            <Badge>{date.toString()}</Badge>
+                        </Card.Title>
 
-                            <Card.Text>
-                                <h4>{movie?.title}</h4>
-                                <p>{movie?.overview}</p>
-                            </Card.Text>
-                        </Card.Body>
-                    </Row>
+                        <Card.Text>
+                            <h4>{movie?.title}</h4>
+                            <p>{movie?.overview}</p>
+                        </Card.Text>
+                    </Card.Body>
                 </Col>
             </Row>
-                <div>
-                    <CommentsForm></CommentsForm>
-                </div>
-
-                <Card.Footer>
-                    <Button variant="danger">
-                        Eliminar
-                    </Button>
-                </Card.Footer>
-
+            <CommentsForm></CommentsForm>
+            <Card.Footer>
+                <Button variant="danger">
+                    Eliminar
+                </Button>
+            </Card.Footer>
         </Card>
     );
 };
