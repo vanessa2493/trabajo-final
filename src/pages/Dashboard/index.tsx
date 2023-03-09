@@ -3,12 +3,16 @@ import React from "react";
 import "./styles.scss"
 import {useEffect, useState} from "react";
 import { servicesUser } from "../../services/users";
-import {Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
+import {User} from "../../types";
 
 const Dashboard = () =>{
 
-    const [movies, setMovies] = useState([]);
-    const [user, setUser] = useState(null);
+    const [movies, setMovies] = useState<string[]>([]);
+    const [user, setUser] = useState<User>();
+    const currentDate = new Date();
+    const dateString = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+
 
     const userId = "-NN-MQaZ3yflds21sV0q"
 
@@ -31,16 +35,18 @@ const Dashboard = () =>{
 
     return(
         <Layout page="Home" hideNav>
-            <Row className="movieCardContainer" xs={1} md={3}>
+            <Col className="post-card-container">
                 {movies?.map((movieId) => (
-                    <PostCard id="1"
-                              movieId={movieId}
-                              date={new Date()}
-                              userName={user?.name}
-                              onDelete={() => {console.log("delete")}}
-                    />
+                    <Row className="post-card">
+                        <PostCard id="1"
+                                  movieId={movieId}
+                                  date={dateString}
+                                  userName={user?.name}
+                                  onDelete={() => {console.log("delete")}}
+                        />
+                    </Row>
                 ))}
-            </Row>
+            </Col>
 
         </Layout>
     )

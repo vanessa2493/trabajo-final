@@ -2,3 +2,14 @@
   display : flex;
   justify-content: space-between
 }
+
+.post-card-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+  border-radius: 10px;
+  margin: 10px auto;
+
+
+}

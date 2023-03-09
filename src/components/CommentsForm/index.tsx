@@ -15,16 +15,20 @@ const CommentsForm = () => {
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Row>
-                <Form.Label>Comentarios: </Form.Label>
                 <Col>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control type="text" placeholder="Ingresar comentario" {...register("comment")} />
-                    </Form.Group>
-                </Col>
-                <Col>
-                    <Button variant="primary" type="submit">
-                        Envíar comentario
-                    </Button>
+                    <Form.Label>Comentarios: </Form.Label>
+                    <Row>
+                        <Col>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Control type="text" placeholder="Ingresar comentario" {...register("comment")} />
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Button variant="primary" type="submit">
+                                Envíar comentario
+                            </Button>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </Form>

@@ -3,12 +3,13 @@ import { Card, Row, Col, Image, Badge, Button } from "react-bootstrap";
 import { CommentsForm } from "../CommentsForm";
 import { MovieType } from "../../types";
 import { serviceMovies } from "../../services/movies";
+import "./styles.scss";
 
 type Props = {
     id: String;
     movieId: string;
     date: Date | string;
-    userName: string;
+    userName?: string;
     onDelete?: (id: string) => void;
 };
 
@@ -31,20 +32,20 @@ const PostCard: FC<Props> = ({
 
 
     return (
-        <Card>
+        <Card className="post-car">
             <Row>
-                <Col xs={3}>
+                <Col>
                     <Image
-                        className="movieImage"
+                        className="post-image"
                         src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
                         alt={`poster-${movie?.title}`}
                         fluid
                     />
                 </Col>
-                <Col xs={9}>
+                <Col>
                     <Card.Body>
                         <Card.Title className="card-title">
-                            <span>{userName}</span>{" "}
+                            <span>{userName}</span>
                             <Badge>{date.toString()}</Badge>
                         </Card.Title>
 
@@ -54,16 +55,13 @@ const PostCard: FC<Props> = ({
                         </Card.Text>
                     </Card.Body>
                 </Col>
-                <div>
-                    <CommentsForm></CommentsForm>
-                </div>
-
-                <Card.Footer>
-                    <Button variant="danger">
-                        Eliminar
-                    </Button>
-                </Card.Footer>
             </Row>
+            <CommentsForm></CommentsForm>
+            <Card.Footer>
+                <Button variant="danger">
+                    Eliminar
+                </Button>
+            </Card.Footer>
         </Card>
     );
 };
