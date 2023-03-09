@@ -11,7 +11,7 @@ const search = async (query: string, page: string) => {
     }
 };
 
-const getMovieById = async (id: string) => {
+const getMovieById = async (id?: string) => {
     try {
         const response = await apiMovies.get(`/movie/${id}`)
         return response.data;

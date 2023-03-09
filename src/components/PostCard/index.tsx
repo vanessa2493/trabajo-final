@@ -7,14 +7,13 @@ import "./styles.scss";
 
 type Props = {
     id: String;
-    movieId: string;
-    date: Date | string;
+    movieId?: string;
+    date: string;
     userName?: string;
     onDelete?: (id: string) => void;
 };
 
 const PostCard: FC<Props> = ({
-                                 id,
                                  movieId,
                                  date,
                                  userName,
