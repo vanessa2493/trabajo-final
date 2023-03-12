@@ -2,10 +2,18 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FC, useState } from 'react';
 import { authService } from '../../services/auth';
+import {useMe} from "../../hooks";
+import {LoginFormType} from "../../types";
 
 const LoginForm: FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const login = useMe()
+
+    const onSubmit = (data: LoginFormType) => {
+        login(email, password)
+    }
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

@@ -1,10 +1,14 @@
 import { initializeApp } from "firebase/app";
-import { getAuth,
-         createUserWithEmailAndPassword,
-         signInWithEmailAndPassword,
-         signOut,
-         User,
-         onAuthStateChanged } from "firebase/auth";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    User,
+    onAuthStateChanged,
+    sendPasswordResetEmail,
+    signInWithCustomToken
+} from "firebase/auth";
 
 // Initialize Firebase
 const firebaseConfig ={
@@ -57,4 +61,23 @@ export const authService = {
     onAuthStateChanged: (callback: (user: User | null) => void) => {
         return onAuthStateChanged(auth, callback);
     },
+
+    // Send a password reset email
+    forgotPassword: async (email: string) => {
+        try {
+            await sendPasswordResetEmail(auth, email);
+        } catch (error) {
+            throw error;
+        }
+    },
+
+    // Log in with a token
+    loginWithToken: async (token: string) => {
+        try {
+            const userCredential = await signInWithCustomToken(auth, token);
+            return userCredential.user;
+        } catch (error) {
+            throw error;
+        }
+    }
 };
