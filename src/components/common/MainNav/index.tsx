@@ -1,13 +1,26 @@
 import { FC } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import "./styles.scss"
+import { authService } from "../../../services/auth";
+import { useAuth } from "../../../contexts";
 
 type Props = {
   hideNav?: boolean;
 };
 
+const handleLogout = async () => {
+
+  try {
+    await authService.logout();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const MainNav: FC<Props> = ({ hideNav  }) => {
+  const { currentUser } = useAuth();
+
   return (
     <Navbar className="main-nav" expand="lg">
       <Container fluid className="container-nav" >
@@ -41,14 +54,13 @@ const MainNav: FC<Props> = ({ hideNav  }) => {
                 </NavDropdown>
               </>
             ) : (
-              <>
-                <NavLink className="nav-link" to={"/login"}>
-                  Ingresar
-                </NavLink>
-                <NavLink className="nav-link" to={"/signup"}>
-                  Registrarse
-                </NavLink>
-              </>
+              <NavDropdown title={<i className="bi bi-person-circle"></i>} id="basic-nav-dropdown">
+                <NavDropdown.Item as={Link} to="/profile">
+                  Perfil
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={handleLogout}>Cerrar sesión</NavDropdown.Item>
+              </NavDropdown>
             )}
           </Nav>
         </Navbar.Collapse>

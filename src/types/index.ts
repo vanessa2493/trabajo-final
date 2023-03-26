@@ -15,6 +15,32 @@ export type User = {
   uid: string;
 };
 
+export type UserAuth = {
+  uid: string;
+  displayName: string | null;
+  email: string | null;
+  emailVerified: boolean;
+  photoURL: string | null;
+  isAnonymous: boolean;
+  providerData: Array<{
+    uid: string;
+    displayName: string | null;
+    email: string | null;
+    photoURL: string | null;
+    providerId: string;
+  }>;
+  getIdToken: (forceRefresh?: boolean) => Promise<string>;
+  getIdTokenResult: (forceRefresh?: boolean) => Promise<{
+    token: string;
+    expirationTime: string;
+    authTime: string;
+    issuedAtTime: string;
+    signInProvider: string | null;
+    claims: { [key: string]: any };
+  }>;
+};
+
+
 export type SignupType = Omit<User, 'sessionToken' | 'state' | 'posts'>;
 
 export type CommentsType = {
@@ -47,5 +73,6 @@ export type PostType = {
   comments?: string[],
   date: string,
 }
+
 
 

@@ -2,8 +2,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FC, useState } from 'react';
 import { authService } from '../../services/auth';
+import { useAuth } from "../../contexts";
 
 const LoginForm: FC = () => {
+    const { currentUser } = useAuth();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
