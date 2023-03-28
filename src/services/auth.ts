@@ -5,6 +5,7 @@ import { getAuth,
          signOut,
          User,
          onAuthStateChanged } from "firebase/auth";
+import {UserAuth} from "../types";
 
 // Initialize Firebase
 const firebaseConfig ={
@@ -54,7 +55,7 @@ export const authService = {
     },
 
     // Set up a listener for auth state changes
-    onAuthStateChanged: (callback: (user: User | null) => void) => {
+    onAuthStateChanged: (callback: (user: UserAuth | null) => void) => {
         return onAuthStateChanged(auth, callback);
     },
 };

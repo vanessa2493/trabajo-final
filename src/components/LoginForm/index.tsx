@@ -2,8 +2,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FC, useState } from 'react';
 import { authService } from '../../services/auth';
+import { useAuth } from "../../contexts";
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm: FC = () => {
+
+    const { currentUser, setCurrentUser } = useAuth(); // Agrega setCurrentUser a la desestructuración
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -11,7 +15,8 @@ const LoginForm: FC = () => {
         event.preventDefault();
 
         try {
-            await authService.login(email, password);
+            const user = await authService.login(email, password);
+            setCurrentUser(user); // Llama a setCurrentUser para actualizar el usuario en el contexto
         } catch (error) {
             console.error(error);
         }
