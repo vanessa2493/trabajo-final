@@ -1,45 +1,55 @@
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Dashboard, Login, Profile, SearchFriends, SearchMovies, Signup} from "./pages";
 import {AuthProvider, useAuth} from "./contexts";
+import {useEffect, useState} from "react";
 
 const App = () => {
-    const { currentUser } = useAuth();
+  // trae el currentUser del contexto
+  const { currentUser } = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    setIsLoading(false);
+  }, [currentUser]);
 
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
-      <BrowserRouter>
+      <BrowserRouter>        
         <AuthProvider>
             <Routes>
               <Route
                   path="/"
                   element={
-                    currentUser ? <Dashboard /> : <Navigate to="/login" replace />
+                     currentUser ? <Dashboard /> : <Navigate to="/login" replace />
                   }
               />
               <Route
-                  path="login"
+                  path="/login"
                   element={currentUser ? <Navigate to="/" replace /> : <Login />}
               />
               <Route
-                  path="signup"
+                  path="/signup"
                   element={currentUser ? <Navigate to="/" replace /> : <Signup />}
               />
               <Route
-                  path="searchMovies"
+                  path="/searchMovies"
                   element={
-                    currentUser ? <SearchMovies /> : <Navigate to="/login" replace />
+                      currentUser ? <SearchMovies /> : <Navigate to="/login" replace />
                   }
               />
               <Route
-                  path="searchFriends"
+                  path="/searchFriends"
                   element={
-                    currentUser ? <SearchFriends /> : <Navigate to="/login" replace />
+                      currentUser ? <SearchFriends /> : <Navigate to="/login" replace />
                   }
               />
               <Route
-                  path="profile"
+                  path="/profile"
                   element={
-                    currentUser ? <Profile /> : <Navigate to="/login" replace />
+                      currentUser ? <Profile /> : <Navigate to="/login" replace />
                   }
               />
             </Routes>
